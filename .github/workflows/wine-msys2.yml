@@ -1,0 +1,14 @@
+# Dummy, probably needed as manual workflow_dispatch only is shown on master branch
+name: Wine MSYS2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v3
+      
