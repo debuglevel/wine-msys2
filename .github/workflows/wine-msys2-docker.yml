@@ -79,6 +79,10 @@ jobs:
         run: |
           docker run wine ls -al /opt
           docker run wine find /opt/wine -iname '*.exe'
+          echo # wine ping.exe
+          docker run wine wine /opt/wine/wine-9.0-rc1-custom-amd64/lib/wine/x86_64-windows/ping.exe
+          echo # ping.exe
+          docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/lib/wine/x86_64-windows/ping.exe
           
       # - uses: actions/upload-artifact@v3
       #   with:
