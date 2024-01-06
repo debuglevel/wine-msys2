@@ -102,8 +102,8 @@ jobs:
           #echo docker run wine ls -al /opt
           #docker run wine ls -al /opt
           #
-          #echo \# docker run wine find /opt/wine -iname '*.exe'
-          #docker run wine find /opt/wine -iname '*.exe'
+          echo \# docker run wine find /opt/wine -iname '*.exe'
+          docker run wine find /opt/wine -iname '*.exe'
           #
           #echo \# docker run wine find /opt/wine -iname '*wine*'
           #docker run wine find /opt/wine -iname '*wine*'
