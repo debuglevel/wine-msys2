@@ -22,14 +22,17 @@ jobs:
           sudo apt update
           sudo apt install debootstrap perl git wget xz-utils bubblewrap autoconf
           #
-          # echo _ cd /opt
-          # cd /opt
+          echo _ cd /opt
+          cd /opt
           #
           echo _ ls -alh /opt
           ls -alh /opt
           #
           echo _ tree
           tree
+          #
+          echo cd
+          cd "Wine Stable"
           #
           echo _ sudo tar -xpf /opt/wine-*-custom-amd64.tar.xz
           sudo tar -C -xpf /opt/wine-*-custom-amd64.tar.xz
