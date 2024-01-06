@@ -71,8 +71,10 @@ jobs:
           ls -alh /home/runner/work/wine-msys2/wine-msys2
           echo _ tree /home/runner/work/wine-msys2/wine-msys2
           tree /home/runner/work/wine-msys2/wine-msys2
-      #    sha256sum *.tar.xz
-      # - uses: actions/upload-artifact@v3
-      #   with:
-      #     name: Wine Stable
-      #     path: ./*.tar.xz
+          #
+          sha256sum *.tar.xz
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Wine Stable
+          path: ./*.tar.xz
+          retention-days: 2
