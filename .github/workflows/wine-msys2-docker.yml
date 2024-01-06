@@ -77,6 +77,7 @@ jobs:
           file $(which ping) 
           file $(which cat)
           #
+          # TODO: This prints 32bit for our amd64 build. That is weird, and Docker probably can't run this.
           echo \# file $WD/Docker/wine/wine-9.0-rc1-custom-.../bin/wine
           file $WD/Docker/wine/wine-9.0-rc1-custom-*/bin/wine
           #
