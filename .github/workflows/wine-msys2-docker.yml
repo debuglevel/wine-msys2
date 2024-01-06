@@ -39,7 +39,7 @@ jobs:
           ls -alh
           #
           echo _ sudo tar -xpf wine-*-custom-amd64.tar.xz
-          sudo tar -C -xpf wine-*-custom-amd64.tar.xz
+          sudo tar -xpf wine-*-custom-amd64.tar.xz
           #
           echo _ ls -alh
           ls -alh
