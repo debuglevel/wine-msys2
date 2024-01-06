@@ -83,9 +83,7 @@ jobs:
           docker run wine find /opt/wine -iname '*.exe'
           docker run wine find /opt/wine -iname '*wine*'
           echo # wine ping.exe
-          docker run wine wine /opt/wine/wine-9.0-rc1-custom-amd64/lib/wine/x86_64-windows/ping.exe
-          echo # wine ping.exe
-          docker run wine wine /opt/wine/wine-9.0-rc1-custom-amd64/lib/wine/x86_64-windows/ping.exe
+          docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /opt/wine/wine-9.0-rc1-custom-amd64/lib/wine/x86_64-windows/ping.exe
           echo # ping.exe
           docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/lib/wine/x86_64-windows/ping.exe
           
