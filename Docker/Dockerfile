@@ -41,11 +41,11 @@ RUN apt-get install -y file
 
 COPY wine /opt/wine
 
-#RUN wine --help
-RUN file /opt/wine-stable/bin/wine
-RUN file /opt/wine-stable/bin/wine64
-RUN /opt/wine-stable/bin/wine --help
-RUN /opt/wine-stable/bin/wine64 --help
+RUN tree -L 3 /opt/wine
+RUN file /opt/wine/bin/wine
+RUN file /opt/wine/bin/wine64
+RUN /opt/wine/bin/wine --help
+RUN /opt/wine/bin/wine64 --help
 #RUN find / -name '*wine*'
 
 
