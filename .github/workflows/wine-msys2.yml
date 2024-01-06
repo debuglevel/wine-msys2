@@ -66,6 +66,11 @@ jobs:
           #
           export WINE_VERSION="$(wget -q -O - "https://gitlab.winehq.org/wine/wine/-/raw/stable/VERSION" | tail -c +14)"
           WINE_BRANCH=vanilla ./build_wine.sh
+          #
+          echo _ ls -alh /home/runner/work/wine-msys2/wine-msys2
+          ls -alh /home/runner/work/wine-msys2/wine-msys2
+          echo _ tree /home/runner/work/wine-msys2/wine-msys2
+          tree /home/runner/work/wine-msys2/wine-msys2
       #    sha256sum *.tar.xz
       # - uses: actions/upload-artifact@v3
       #   with:
