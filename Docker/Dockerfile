@@ -40,7 +40,7 @@ RUN apt-get update
 RUN apt-get install -y file
 
 
-RUN wine --help
+#RUN wine --help
 RUN file /opt/wine-stable/bin/wine
 RUN file /opt/wine-stable/bin/wine64
 RUN /opt/wine-stable/bin/wine --help
