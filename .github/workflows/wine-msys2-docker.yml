@@ -119,7 +119,20 @@ jobs:
           #
           echo \# docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /opt/wine/wine-9.0-rc1-custom-amd64/lib/wine/x86_64-windows/whoami.exe
           docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /opt/wine/wine-9.0-rc1-custom-amd64/lib/wine/x86_64-windows/whoami.exe
-          
+
+      - name: Test MSYS2
+        env:
+          ACTIONS_STEP_DEBUG: true
+        run: |
+          #echo docker run wine ls -al /opt
+          wget https://github.com/msys2/msys2-installer/releases/download/2023-10-26/msys2-base-x86_64-20231026.tar.xz
+          tar -xvJf msys2-base-x86_64-20231026.tar.xz
+          tree -L 3
+          #ls -alh
+          #ls -alh msys2-base-x86_64-20231026
+          #ls -alh msys2-base-x86_64-20231026/msys64
+          docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine msys2-base-x86_64-20231026/msys64/msys2.exe
+
       # - uses: actions/upload-artifact@v3
       #   with:
       #     name: Wine Stable
