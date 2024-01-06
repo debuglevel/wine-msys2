@@ -23,6 +23,8 @@ jobs:
           sudo apt update
           sudo apt install debootstrap perl git wget xz-utils bubblewrap autoconf
           #
+          WD=$(pwd)
+          #
           echo _ cd /opt
           cd /opt
           #
@@ -47,6 +49,18 @@ jobs:
           echo _ tree -L 2
           tree -L 2
           #
+          echo _ cp -a wine-9.0-rc1-custom-amd64 $WD/Docker/wine
+          cp -a wine-9.0-rc1-custom-amd64 $WD/Docker/wine
+          #
+          echo _ cd $WD/Docker
+          cd $WD/Docker
+          #
+          echo _ ls -alh
+          ls -alh
+          #
+          echo docker build -t wine .
+          docker build -t wine .
+
           
       # - uses: actions/upload-artifact@v3
       #   with:
