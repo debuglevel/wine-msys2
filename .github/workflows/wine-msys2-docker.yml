@@ -29,8 +29,8 @@ jobs:
           echo _ ls -alh /opt
           ls -alh /opt
           #
-          echo _ tree
-          tree
+          echo _ tree -L 2
+          tree -L 2
           #
           echo cd
           cd "Wine Stable"
@@ -41,8 +41,8 @@ jobs:
           echo _ ls -alh /opt
           ls -alh /opt
           # 
-          echo _ tree
-          tree
+          echo _ tree -L 2
+          tree -L 2
           #
           
       # - uses: actions/upload-artifact@v3
