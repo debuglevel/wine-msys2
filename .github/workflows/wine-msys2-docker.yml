@@ -132,7 +132,16 @@ jobs:
           #ls -alh msys64
           #docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/msys2.exe
           docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -c "echo HIER: $PWD"
-          #c:\msys64\usr\bin\env MSYSTEM=MINGW64 c:\msys64\usr\bin\bash -l -c "PATH=\"/c/Program Files/Java/jdk1.8.X_XXX/bin:/c/Program Files/Meson:$PATH\" /c/Users/rom1v/project/release"
+          docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -c "pacman --sync --needed --noconfirm python python-pip"
+          docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -c "pacman --sync --needed --noconfirm git base-devel gcc openssl-devel pkgconf"
+          docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -c "pacman --sync --needed --noconfirm openssh ssh-pageant"
+          docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -c "python -m pip install --upgrade pip setuptools wheel"
+          docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -c "python --version"
+          docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -c "which python"
+          docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -c "which python3"
+          docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -c "which pip"
+          docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -c "which pip3"
+          
 
       # - uses: actions/upload-artifact@v3
       #   with:
