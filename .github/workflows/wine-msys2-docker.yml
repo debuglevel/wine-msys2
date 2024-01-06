@@ -129,9 +129,8 @@ jobs:
           tar -xvJf msys2-base-x86_64-20231026.tar.xz
           tree -L 3
           #ls -alh
-          #ls -alh msys2-base-x86_64-20231026
-          #ls -alh msys2-base-x86_64-20231026/msys64
-          docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine msys2-base-x86_64-20231026/msys64/msys2.exe
+          #ls -alh msys64
+          docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/msys2.exe
 
       # - uses: actions/upload-artifact@v3
       #   with:
