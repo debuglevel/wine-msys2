@@ -35,11 +35,14 @@ jobs:
           echo cd
           cd "Wine Stable"
           #
+          echo _ ls -alh
+          ls -alh
+          #
           echo _ sudo tar -xpf /opt/wine-*-custom-amd64.tar.xz
           sudo tar -C -xpf /opt/wine-*-custom-amd64.tar.xz
           #
-          echo _ ls -alh /opt
-          ls -alh /opt
+          echo _ ls -alh
+          ls -alh
           # 
           echo _ tree -L 2
           tree -L 2
