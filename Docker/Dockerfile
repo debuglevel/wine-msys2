@@ -44,8 +44,8 @@ COPY wine /opt/wine
 RUN tree -L 3 /opt/wine
 RUN file /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine \
          /opt/wine/wine-9.0-rc1-custom-x86/bin/wine \
-         $(which wine) \
-         $(which wine64)
+         /opt/wine-stable/bin/wine \
+         /opt/wine-stable/bin/wine64
 
 RUN /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine --help || true
 RUN /opt/wine/wine-9.0-rc1-custom-x86/bin/wine --help || true
