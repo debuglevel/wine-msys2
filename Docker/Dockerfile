@@ -42,16 +42,19 @@ RUN apt-get install -y file tree
 COPY wine /opt/wine
 
 RUN tree -L 3 /opt/wine
-RUN file /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine \
-         /opt/wine/wine-9.0-rc1-custom-x86/bin/wine \
-         /opt/wine-stable/bin/wine \
-         /opt/wine-stable/bin/wine64
+
+
+# TODO: Our custom wine seems only to work if the official stuff (or some part or some dependency) is installed.
+RUN /opt/wine-stable/bin/wine --version || true
+RUN file /opt/wine-stable/bin/wine
+
+RUN /opt/wine-stable/bin/wine64 --version || true
+RUN file /opt/wine-stable/bin/wine64
 
 RUN /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine --version || true
+RUN file /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine
+
 RUN /opt/wine/wine-9.0-rc1-custom-x86/bin/wine --version || true
-RUN $(which wine) --version || true
-RUN $(which wine64) --version || true
+RUN file /opt/wine/wine-9.0-rc1-custom-x86/bin/wine
 
 #RUN find / -name '*wine*'
-
-
