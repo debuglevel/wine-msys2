@@ -126,11 +126,13 @@ jobs:
         run: |
           #echo docker run wine ls -al /opt
           wget https://github.com/msys2/msys2-installer/releases/download/2023-10-26/msys2-base-x86_64-20231026.tar.xz
-          tar -xvJf msys2-base-x86_64-20231026.tar.xz
-          tree -L 3
+          tar -xJf msys2-base-x86_64-20231026.tar.xz
+          #tree -L 3
           #ls -alh
           #ls -alh msys64
-          docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/msys2.exe
+          #docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/msys2.exe
+          docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -c "echo HIER: $PWD"
+          #c:\msys64\usr\bin\env MSYSTEM=MINGW64 c:\msys64\usr\bin\bash -l -c "PATH=\"/c/Program Files/Java/jdk1.8.X_XXX/bin:/c/Program Files/Meson:$PATH\" /c/Users/rom1v/project/release"
 
       # - uses: actions/upload-artifact@v3
       #   with:
