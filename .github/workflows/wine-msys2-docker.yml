@@ -97,6 +97,9 @@ jobs:
           echo \# docker run wine file /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine
           docker run wine file /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine
           #
+          echo \# docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine --help
+          docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine --help
+          #
           echo \# docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /opt/wine/wine-9.0-rc1-custom-amd64/lib/wine/x86_64-windows/ping.exe
           docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /opt/wine/wine-9.0-rc1-custom-amd64/lib/wine/x86_64-windows/ping.exe
           #
