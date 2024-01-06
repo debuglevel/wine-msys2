@@ -76,6 +76,8 @@ jobs:
           echo docker build -t wine .
           docker build -t wine .
       - name: Test Docker Image
+        env:
+          ACTIONS_STEP_DEBUG: true
         run: |
           docker run wine ls -al /opt
           docker run wine find /opt/wine -iname '*.exe'
