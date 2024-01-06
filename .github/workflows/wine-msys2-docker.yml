@@ -13,7 +13,7 @@ jobs:
         id: download-artifact
         uses: dawidd6/action-download-artifact@v2
         with:
-          workflow: win-msys2.yml
+          workflow: wine-msys2.yml
           workflow_conclusion: success
           branch: master-msys2
           path: /opt
