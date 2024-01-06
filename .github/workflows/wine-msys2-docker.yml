@@ -79,20 +79,28 @@ jobs:
         env:
           ACTIONS_STEP_DEBUG: true
         run: |
-          docker run wine ls -al /opt
+          #echo docker run wine ls -al /opt
+          #docker run wine ls -al /opt
           #
+          echo \# docker run wine find /opt/wine -iname '*.exe'
           docker run wine find /opt/wine -iname '*.exe'
           #
+          echo \# docker run wine find /opt/wine -iname '*wine*'
           docker run wine find /opt/wine -iname '*wine*'
           #
+          echo \# docker run wine ls -alh /opt/wine/wine-9.0-rc1-custom-amd64/bin/
           docker run wine ls -alh /opt/wine/wine-9.0-rc1-custom-amd64/bin/
           #
+          echo \# docker run wine ls -alh /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine
           docker run wine ls -alh /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine
           #
-          echo \# wine ping.exe
+          echo docker run wine file /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine
+          docker run wine file /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine
+          #
+          echo \# docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /opt/wine/wine-9.0-rc1-custom-amd64/lib/wine/x86_64-windows/ping.exe
           docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /opt/wine/wine-9.0-rc1-custom-amd64/lib/wine/x86_64-windows/ping.exe
           #
-          echo \# ping.exe
+          echo \# docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/lib/wine/x86_64-windows/ping.exe
           docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/lib/wine/x86_64-windows/ping.exe
           
       # - uses: actions/upload-artifact@v3
