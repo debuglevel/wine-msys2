@@ -46,6 +46,9 @@ jobs:
           echo _ ls -alh
           ls -alh
           #
+          echo _ sudo tar -xpf wine-*-custom-x86.tar.xz
+          sudo tar -xpf wine-*-custom-x86.tar.xz
+          #
           echo _ sudo tar -xpf wine-*-custom-amd64.tar.xz
           sudo tar -xpf wine-*-custom-amd64.tar.xz
           #
@@ -61,14 +64,17 @@ jobs:
           echo _ $WD/Docker/wine 
           mkdir -p $WD/Docker/wine
           #
+          echo _ cp -a wine-9.0-rc1-custom-x86 $WD/Docker/wine
+          cp -a wine-9.0-rc1-custom-x86 $WD/Docker/wine
+          #
           echo _ cp -a wine-9.0-rc1-custom-amd64 $WD/Docker/wine
           cp -a wine-9.0-rc1-custom-amd64 $WD/Docker/wine
           #
-          #echo _ mv wine-9.0-rc1-custom-amd64 wine
-          #mv wine-9.0-rc1-custom-amd64 wine
-          #
           echo \# find $WD/Docker/wine -name '*wine*'
           find $WD/Docker/wine -name '*wine*'
+          #
+          echo \# file $WD/Docker/wine/wine-9.0-rc1-custom-.../bin/wine
+          file $WD/Docker/wine/wine-9.0-rc1-custom-*/bin/wine
           #
           echo \# $WD/Docker/wine/wine-9.0-rc1-custom-amd64/bin/wine --help
           $WD/Docker/wine/wine-9.0-rc1-custom-amd64/bin/wine --help
