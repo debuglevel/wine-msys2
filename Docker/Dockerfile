@@ -40,6 +40,7 @@ RUN apt-get install -y file
 
 RUN wine --help
 RUN file $(which wine)
+RUN file $(which wine64)
 RUN find / -name '*wine*'
 
 
