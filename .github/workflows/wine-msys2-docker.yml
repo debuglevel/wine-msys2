@@ -79,6 +79,9 @@ jobs:
           echo \# $WD/Docker/wine/wine-9.0-rc1-custom-amd64/bin/wine --help
           $WD/Docker/wine/wine-9.0-rc1-custom-amd64/bin/wine --help
           #
+          echo \# $WD/Docker/wine/wine-9.0-rc1-custom-x86/bin/wine --help
+          $WD/Docker/wine/wine-9.0-rc1-custom-x86/bin/wine --help
+          #
           echo _ cd $WD/Docker
           cd $WD/Docker
           #
