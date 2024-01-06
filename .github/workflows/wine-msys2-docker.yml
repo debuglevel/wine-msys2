@@ -15,6 +15,7 @@ jobs:
         with:
           workflow: win-msys2.yml
           workflow_conclusion: success
+          branch: master-msys2
           path: /opt
       - name: Build Docker Image
         run: |
