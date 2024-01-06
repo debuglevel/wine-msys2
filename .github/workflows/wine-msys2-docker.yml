@@ -38,8 +38,8 @@ jobs:
           echo _ ls -alh
           ls -alh
           #
-          echo _ sudo tar -xpf /opt/wine-*-custom-amd64.tar.xz
-          sudo tar -C -xpf /opt/wine-*-custom-amd64.tar.xz
+          echo _ sudo tar -xpf wine-*-custom-amd64.tar.xz
+          sudo tar -C -xpf wine-*-custom-amd64.tar.xz
           #
           echo _ ls -alh
           ls -alh
