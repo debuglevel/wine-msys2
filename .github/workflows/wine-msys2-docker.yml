@@ -131,8 +131,9 @@ jobs:
           #ls -alh
           #ls -alh msys64
           #docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/msys2.exe
-          docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -c "echo HIER: $PWD"
-          docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -c "pacman --sync --needed --noconfirm python python-pip"
+          docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "echo HIER: $PWD"
+          docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "pacman --version"
+          docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "pacman --sync --needed --noconfirm python python-pip"
           docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -c "pacman --sync --needed --noconfirm git base-devel gcc openssl-devel pkgconf"
           docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -c "pacman --sync --needed --noconfirm openssh ssh-pageant"
           docker run -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -c "python -m pip install --upgrade pip setuptools wheel"
