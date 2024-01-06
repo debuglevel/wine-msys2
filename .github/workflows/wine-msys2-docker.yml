@@ -50,7 +50,10 @@ jobs:
           tree -L 2
           #
           echo _ cp -a wine-9.0-rc1-custom-amd64 $WD/Docker/wine
-          cp -a wine-9.0-rc1-custom-amd64 $WD/Docker/wine
+          cp -a wine-9.0-rc1-custom-amd64 $WD/Docker
+          #
+          echo _ mv wine-9.0-rc1-custom-amd64 wine
+          mv wine-9.0-rc1-custom-amd64 wine
           #
           echo _ cd $WD/Docker
           cd $WD/Docker
