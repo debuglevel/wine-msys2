@@ -67,6 +67,12 @@ jobs:
           #echo _ mv wine-9.0-rc1-custom-amd64 wine
           #mv wine-9.0-rc1-custom-amd64 wine
           #
+          echo \# find $WD/Docker/wine -name '*wine*'
+          find $WD/Docker/wine -name '*wine*'
+          #
+          echo \# $WD/Docker/wine/wine-9.0-rc1-custom-amd64/bin/wine --help
+          $WD/Docker/wine/wine-9.0-rc1-custom-amd64/bin/wine --help
+          #
           echo _ cd $WD/Docker
           cd $WD/Docker
           #
