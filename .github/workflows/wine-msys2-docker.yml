@@ -117,8 +117,8 @@ jobs:
           echo \# docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine --version
           docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine --version
           #
-          echo \# docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /opt/wine/wine-9.0-rc1-custom-amd64/lib/wine/x86_64-windows/ping.exe /?
-          docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /opt/wine/wine-9.0-rc1-custom-amd64/lib/wine/x86_64-windows/ping.exe /?
+          echo \# docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /opt/wine/wine-9.0-rc1-custom-amd64/lib/wine/x86_64-windows/whoami.exe
+          docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /opt/wine/wine-9.0-rc1-custom-amd64/lib/wine/x86_64-windows/whoami.exe
           
       # - uses: actions/upload-artifact@v3
       #   with:
