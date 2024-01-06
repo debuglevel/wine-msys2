@@ -77,8 +77,8 @@ jobs:
           docker build -t wine .
       - name: Test Docker Image
         run: |
-          docker run -ti wine ls -al /opt
-          docker run -ti wine find /opt/wine -iname '*.exe'
+          docker run -t wine ls -al /opt
+          docker run -t wine find /opt/wine -iname '*.exe'
           
       # - uses: actions/upload-artifact@v3
       #   with:
