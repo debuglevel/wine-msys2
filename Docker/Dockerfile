@@ -37,7 +37,7 @@ FROM ubuntu:22.04
 RUN dpkg --add-architecture i386
 
 RUN apt-get update
-RUN apt-get install -y file
+RUN apt-get install -y file tree
 
 COPY wine /opt/wine
 
