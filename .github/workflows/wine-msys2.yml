@@ -38,10 +38,20 @@ jobs:
           sudo apt update
           sudo apt install debootstrap perl git wget xz-utils bubblewrap autoconf
           cd /opt
+          
           ls -alh
+          
+          echo sudo tar -C /opt -xpf /opt/bootstraps.tar.xz
           sudo tar -C /opt -xpf /opt/bootstraps.tar.xz
+          
           ls -alh
+
+          echo ls -alh /opt/chroots
+          ls -alh /opt/chroots
+
+          echo chmod +x build_wine.sh
           chmod +x build_wine.sh
+
           export WINE_VERSION="$(wget -q -O - "https://gitlab.winehq.org/wine/wine/-/raw/stable/VERSION" | tail -c +14)"
           WINE_BRANCH=vanilla ./build_wine.sh
       #    sha256sum *.tar.xz
