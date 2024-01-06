@@ -18,9 +18,17 @@ jobs:
           sudo apt install debootstrap perl
           chmod +x create_ubuntu_bootstraps.sh
           sudo ./create_ubuntu_bootstraps.sh
+          
+          echo _ cd /opt
           cd /opt
+
+          echo _ ls -alh
           ls -alh
+
+          echo _ sudo tar -I "xz -T0 -9" -cpf bootstraps.tar.xz chroots
           sudo tar -I "xz -T0 -9" -cpf bootstraps.tar.xz chroots
+
+          echo _ ls -alh
           ls -alh
       #    sha256sum *.tar.xz
 
@@ -37,19 +45,23 @@ jobs:
         run: |
           sudo apt update
           sudo apt install debootstrap perl git wget xz-utils bubblewrap autoconf
-          cd /opt
+
+      #    echo _ cd /opt
+      #    cd /opt
           
-          ls -alh
+          echo _ ls -alh /opt
+          ls -alh /opt
           
-          echo sudo tar -C /opt -xpf /opt/bootstraps.tar.xz
+          echo _ sudo tar -C /opt -xpf /opt/bootstraps.tar.xz
           sudo tar -C /opt -xpf /opt/bootstraps.tar.xz
           
-          ls -alh
+          echo _ ls -alh /opt
+          ls -alh /opt
 
-          echo ls -alh /opt/chroots
+          echo _ ls -alh /opt/chroots
           ls -alh /opt/chroots
 
-          echo chmod +x build_wine.sh
+          echo _ chmod +x build_wine.sh
           chmod +x build_wine.sh
 
           export WINE_VERSION="$(wget -q -O - "https://gitlab.winehq.org/wine/wine/-/raw/stable/VERSION" | tail -c +14)"
