@@ -28,6 +28,9 @@ jobs:
           echo _ ls -alh /opt
           ls -alh /opt
           #
+          echo _ tree
+          tree
+          #
           echo _ sudo tar -xpf /opt/wine-*-custom-amd64.tar.xz
           sudo tar -C -xpf /opt/wine-*-custom-amd64.tar.xz
           #
