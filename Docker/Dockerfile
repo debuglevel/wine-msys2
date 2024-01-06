@@ -39,6 +39,7 @@ RUN dpkg --add-architecture i386
 RUN apt-get update
 RUN apt-get install -y file
 
+COPY wine /opt/wine
 
 #RUN wine --help
 RUN file /opt/wine-stable/bin/wine
@@ -48,4 +49,3 @@ RUN /opt/wine-stable/bin/wine64 --help
 #RUN find / -name '*wine*'
 
 
-COPY wine /opt/wine
