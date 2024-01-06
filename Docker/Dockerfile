@@ -47,10 +47,10 @@ RUN file /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine \
          /opt/wine-stable/bin/wine \
          /opt/wine-stable/bin/wine64
 
-RUN /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine --help || true
-RUN /opt/wine/wine-9.0-rc1-custom-x86/bin/wine --help || true
-RUN $(which wine) --help || true
-RUN $(which wine64) --help || true
+RUN /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine --version || true
+RUN /opt/wine/wine-9.0-rc1-custom-x86/bin/wine --version || true
+RUN $(which wine) --version || true
+RUN $(which wine64) --version || true
 
 #RUN find / -name '*wine*'
 
