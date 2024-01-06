@@ -73,6 +73,10 @@ jobs:
           echo \# find $WD/Docker/wine -name '*wine*'
           find $WD/Docker/wine -name '*wine*'
           #
+          file $(which ls)
+          file $(which ping) 
+          file $(which cat)
+          #
           echo \# file $WD/Docker/wine/wine-9.0-rc1-custom-.../bin/wine
           file $WD/Docker/wine/wine-9.0-rc1-custom-*/bin/wine
           #
