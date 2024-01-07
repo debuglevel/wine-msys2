@@ -145,13 +145,16 @@ jobs:
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "pacman --sync --needed --noconfirm python python-pip"
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "pacman --sync --needed --noconfirm git base-devel gcc openssl-devel pkgconf"
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "pacman --sync --needed --noconfirm openssh ssh-pageant"
-          docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "python pip install --upgrade pip setuptools wheel"
-          docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "python --version"
-          docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "python3 --version"
+          #
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "which python"
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "which python3"
+          docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "python --version"
+          docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "python3 --version"
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "which pip"
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "which pip3"
+          #
+          docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "python -m pip install --upgrade pip setuptools wheel"
+
 
       - name: Test if borgmatic can be installed on MSYS2 in the docker image
         env:
