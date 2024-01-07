@@ -146,7 +146,8 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
       - name: Push docker image to Docker Hub
         run: |
-          docker tag wine wine-msys2:latest
+          #docker tag wine wine-msys2:latest
+          docker tag wine debuglevel/wine-msys2:latest
           docker push debuglevel/wine-msys2:latest
 
       - name: Test if pacman works on MSYS2 in the docker image (by installing borg/borgmatic dependencies)
