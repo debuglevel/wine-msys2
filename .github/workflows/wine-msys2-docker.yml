@@ -95,7 +95,8 @@ jobs:
           #
           echo docker build -t wine .
           docker build -t wine .
-      - name: Test Docker Image
+
+      - name: Test if Wine works in the docker image
         env:
           ACTIONS_STEP_DEBUG: true
         run: |
@@ -120,7 +121,9 @@ jobs:
           echo \# docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /opt/wine/wine-9.0-rc1-custom-amd64/lib/wine/x86_64-windows/whoami.exe
           docker run wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /opt/wine/wine-9.0-rc1-custom-amd64/lib/wine/x86_64-windows/whoami.exe
 
-      - name: Test MSYS2
+
+
+      - name: Test if MSYS2 can be run in the docker image
         env:
           ACTIONS_STEP_DEBUG: true
         run: |
@@ -134,22 +137,62 @@ jobs:
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine --help
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "echo HIER: $PWD"
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "pacman --version"
+
+      - name: Test if pacman works on MSYS2 in the docker image (by installing borg/borgmatic dependencies)
+        env:
+          ACTIONS_STEP_DEBUG: true
+        run: |
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "pacman --sync --needed --noconfirm python python-pip"
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "pacman --sync --needed --noconfirm git base-devel gcc openssl-devel pkgconf"
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "pacman --sync --needed --noconfirm openssh ssh-pageant"
-          docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "python -m pip install --upgrade pip setuptools wheel"
+          docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "python pip install --upgrade pip setuptools wheel"
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "python --version"
+          docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "python3 --version"
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "which python"
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "which python3"
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "which pip"
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "which pip3"
+
+      - name: Test if borgmatic can be installed on MSYS2 in the docker image
+        env:
+          ACTIONS_STEP_DEBUG: true
+        run: |
           # docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "SETUPTOOLS_USE_DISTUTILS=stdlib pip install borgmatic==1.8.6"
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "SETUPTOOLS_USE_DISTUTILS=stdlib pip install 'borgmatic @ git+https://github.com/debuglevel/borgmatic@edd2cceceeeb3984a9d39f41e7cfc6fb6495a21f'"
-                                                                                                                                                                 python -m pip install 'django @ git+https://github.com/django/django@80d38de52bb2721a7b44fce4057bcff571afc23a'
-          docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "pip install borgbackup==1.2.7"
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "borgmatic --version"
-          docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "borg --version"
-          
+
+      - name: Test if borg can be installed on MSYS2 in the docker image
+        env:
+          ACTIONS_STEP_DEBUG: true
+        run: |
+          docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "pip install borgbackup==1.2.7"
+          docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "borg --version"          
+
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+      
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        with:
+          images: debuglevel/wine-msys2
+      
+      - name: Build and push Docker image
+        uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
+        with:
+          context: Docker
+          file: ./Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+
+
+
 
       # - uses: actions/upload-artifact@v3
       #   with:
