@@ -176,17 +176,3 @@ jobs:
           tar --create --zstd --file msys2-with-borgmatic.tar.zstd msys64
           ls -alh msys2-with-borgmatic.tar.zstd
           curl --upload-file msys2-with-borgmatic.tar.zstd https://free.keep.sh
-      - name: Compress (zstd,10) and upload (to keep.sh) MSYS2+borgmatic
-        run: |
-          export ZSTD_CLEVEL=10
-          export ZSTD_NBTHREADS=4
-          tar --create --zstd --file msys2-with-borgmatic.tar.zstd msys64
-          ls -alh msys2-with-borgmatic.tar.zstd
-          curl --upload-file msys2-with-borgmatic.tar.zstd https://free.keep.sh
-      - name: Compress (zstd,19) and upload (to keep.sh) MSYS2+borgmatic
-        run: |
-          export ZSTD_CLEVEL=19
-          export ZSTD_NBTHREADS=4
-          tar --create --zstd --file msys2-with-borgmatic.tar.zstd msys64
-          ls -alh msys2-with-borgmatic.tar.zstd
-          curl --upload-file msys2-with-borgmatic.tar.zstd https://free.keep.sh
