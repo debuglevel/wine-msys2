@@ -130,22 +130,22 @@ jobs:
           docker_wine /mnt/usr/bin/bash.exe -l -c "which pip"
           docker_wine /mnt/usr/bin/bash.exe -l -c "which pip3"
           #
-          docker_wine /opt/wine/bin/wine /mnt/usr/bin/bash.exe -l -c "python -m pip install --upgrade pip setuptools wheel"
+          docker_wine /mnt/usr/bin/bash.exe -l -c "python -m pip install --upgrade pip setuptools wheel"
       - name: Install borgmatic on MSYS2
         run: |
           shopt -s expand_aliases
           alias docker_wine='docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/bin/wine64'
           #
           # docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/bin/wine /mnt/usr/bin/bash.exe -l -c "SETUPTOOLS_USE_DISTUTILS=stdlib pip install borgmatic==1.8.6"
-          docker_wine /opt/wine/bin/wine /mnt/usr/bin/bash.exe -l -c "SETUPTOOLS_USE_DISTUTILS=stdlib pip install 'borgmatic @ git+https://github.com/debuglevel/borgmatic@edd2cceceeeb3984a9d39f41e7cfc6fb6495a21f'"
-          docker_wine /opt/wine/bin/wine /mnt/usr/bin/bash.exe -l -c "borgmatic --version"
+          docker_wine /mnt/usr/bin/bash.exe -l -c "SETUPTOOLS_USE_DISTUTILS=stdlib pip install 'borgmatic @ git+https://github.com/debuglevel/borgmatic@edd2cceceeeb3984a9d39f41e7cfc6fb6495a21f'"
+          docker_wine /mnt/usr/bin/bash.exe -l -c "borgmatic --version"
       - name: Install borg on MSYS2
         run: |
           shopt -s expand_aliases
           alias docker_wine='docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/bin/wine64'
           #
-          docker_wine /opt/wine/bin/wine /mnt/usr/bin/bash.exe -l -c "pip install borgbackup==1.2.7"
-          docker_wine /opt/wine/bin/wine /mnt/usr/bin/bash.exe -l -c "borg --version"          
+          docker_wine /mnt/usr/bin/bash.exe -l -c "pip install borgbackup==1.2.7"
+          docker_wine /mnt/usr/bin/bash.exe -l -c "borg --version"          
 
       - name: Compress (zstd,5) and upload (to keep.sh) MSYS2+borgmatic
         run: |
