@@ -169,14 +169,24 @@ jobs:
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "pip install borgbackup==1.2.7"
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "borg --version"          
 
-      - name: Compress (xz) and upload (to keep.sh) MSYS2+borgmatic
+      - name: Compress (zstd,5) and upload (to keep.sh) MSYS2+borgmatic
         run: |
-          export XZ_OPT=-9
-          tar --create --xz --file msys2-with-borgmatic.tar.xz msys64
-          curl --upload-file msys2-with-borgmatic.tar.xz https://free.keep.sh
-      - name: Compress (zstd) and upload (to keep.sh) MSYS2+borgmatic
+          export ZSTD_CLEVEL=5
+          export ZSTD_NBTHREADS=4
+          tar --create --zstd --file msys2-with-borgmatic.tar.zstd msys64
+          ls -alh msys2-with-borgmatic.tar.zstd
+          curl --upload-file msys2-with-borgmatic.tar.zstd https://free.keep.sh
+      - name: Compress (zstd,10) and upload (to keep.sh) MSYS2+borgmatic
+        run: |
+          export ZSTD_CLEVEL=10
+          export ZSTD_NBTHREADS=4
+          tar --create --zstd --file msys2-with-borgmatic.tar.zstd msys64
+          ls -alh msys2-with-borgmatic.tar.zstd
+          curl --upload-file msys2-with-borgmatic.tar.zstd https://free.keep.sh
+      - name: Compress (zstd,19) and upload (to keep.sh) MSYS2+borgmatic
         run: |
           export ZSTD_CLEVEL=19
           export ZSTD_NBTHREADS=4
           tar --create --zstd --file msys2-with-borgmatic.tar.zstd msys64
+          ls -alh msys2-with-borgmatic.tar.zstd
           curl --upload-file msys2-with-borgmatic.tar.zstd https://free.keep.sh
