@@ -66,8 +66,6 @@ jobs:
           echo \# file /opt/wine/bin/wine64
           docker run wine file /opt/wine/bin/wine64
           #
-          echo \# docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/bin/wine64 --version
-          docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/bin/wine64 --version
           echo \# docker_wine --version
           docker_wine --version
           #
@@ -76,10 +74,22 @@ jobs:
 
       - name: Test if MSYS2 can be run in the docker image
         run: |
+          echo \# wget --quiet https://github.com/msys2/msys2-installer/releases/download/2023-10-26/msys2-base-x86_64-20231026.tar.xz
           wget --quiet https://github.com/msys2/msys2-installer/releases/download/2023-10-26/msys2-base-x86_64-20231026.tar.xz
+          #
+          echo \# ls -al .
+          ls -al .
+          #
+          echo \# tar --extract --file msys2-base-x86_64-20231026.tar.xz
           tar --extract --file msys2-base-x86_64-20231026.tar.xz
+          #
+          echo \# docker_wine --help
           docker_wine --help
+          #
+          echo \# docker_wine /mnt/usr/bin/bash.exe -l -c "echo PWD: $PWD"
           docker_wine /mnt/usr/bin/bash.exe -l -c "echo PWD: $PWD"
+          #
+          echo \# docker_wine /mnt/usr/bin/bash.exe -l -c "pacman --version"
           docker_wine /mnt/usr/bin/bash.exe -l -c "pacman --version"
 
       - name: Test if pacman works on MSYS2
