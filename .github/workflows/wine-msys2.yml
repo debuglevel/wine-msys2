@@ -75,6 +75,6 @@ jobs:
           sha256sum *.tar.xz
       - uses: actions/upload-artifact@v3
         with:
-          name: Wine Stable
+          name: wine-msys2
           path: ./*.tar.xz
           retention-days: 2
