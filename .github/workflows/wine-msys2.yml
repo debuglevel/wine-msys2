@@ -8,72 +8,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # TODO: Build from https://gitlab.winehq.org/jhol/wine/-/commits/msys2-hacks-17 instead
-
       # from bootstraps.yml:
       - uses: actions/checkout@v3
       - name: Create bootstraps
         run: |
           sudo apt update
           sudo apt install debootstrap perl
+          #
           chmod +x create_ubuntu_bootstraps.sh
           sudo ./create_ubuntu_bootstraps.sh
-          #
-          echo _ cd /opt
-          cd /opt
-          #
-          echo _ ls -alh
-          ls -alh
-          #
-          echo _ sudo tar -I "xz -T0 -9" -cpf bootstraps.tar.xz chroots
-          sudo tar -I "xz -T0 -9" -cpf bootstraps.tar.xz chroots
-          #
-          echo _ ls -alh
-          ls -alh
-          # sha256sum *.tar.xz
 
-
-      #- uses: actions/checkout@v3
-      # - name: Download artifact
-      #   id: download-artifact
-      #   uses: dawidd6/action-download-artifact@v2
-      #   with:
-      #     workflow: bootstraps.yml
-      #     workflow_conclusion: success
-      #     path: /opt
       - name: Build Wine
         run: |
           sudo apt update
           sudo apt install debootstrap perl git wget xz-utils bubblewrap autoconf
           #
-          # echo _ cd /opt
-          # cd /opt
-          #
-          echo _ ls -alh /opt
-          ls -alh /opt
-          #
-          echo _ sudo tar -C /opt -xpf /opt/bootstraps.tar.xz
-          sudo tar -C /opt -xpf /opt/bootstraps.tar.xz
-          #
-          echo _ ls -alh /opt
-          ls -alh /opt
-          #
-          echo _ ls -alh /opt/chroots
-          ls -alh /opt/chroots
-          # 
-          echo _ chmod +x build_wine.sh
+          echo \# chmod +x build_wine.sh
           chmod +x build_wine.sh
           #
           export WINE_VERSION="$(wget -q -O - "https://gitlab.winehq.org/wine/wine/-/raw/stable/VERSION" | tail -c +14)"
           WINE_BRANCH=vanilla ./build_wine.sh
           #
-          echo _ ls -alh /home/runner/work/wine-msys2/wine-msys2
+          echo \# ls -alh /home/runner/work/wine-msys2/wine-msys2
           ls -alh /home/runner/work/wine-msys2/wine-msys2
-          echo _ tree /home/runner/work/wine-msys2/wine-msys2
-          tree /home/runner/work/wine-msys2/wine-msys2
           #
+          echo \# tree /home/runner/work/wine-msys2/wine-msys2
+          tree -L 2 /home/runner/work/wine-msys2/wine-msys2
+          #
+          echo \# sha256sum *.tar.xz
           sha256sum *.tar.xz
-      - uses: actions/upload-artifact@v3
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
         with:
           name: wine-msys2
           path: ./*.tar.xz
