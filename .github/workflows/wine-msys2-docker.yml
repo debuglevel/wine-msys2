@@ -52,11 +52,11 @@ jobs:
           echo docker build -t wine .
           docker build -t wine .
           #
-          alias docker_wine='docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine64 /opt/wine/bin/wine'
+          alias docker_wine='docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/bin/wine64'
 
       - name: Test if Wine works in the docker image
         run: |
-          alias docker_wine='docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine64 /opt/wine/bin/wine'
+          alias docker_wine='docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/bin/wine64'
           echo \# docker run wine find /opt/wine -iname '*.exe'
           #
           docker run wine find /opt/wine -iname '*.exe'
@@ -64,6 +64,8 @@ jobs:
           echo \# file /opt/wine/bin/wine64
           docker run wine file /opt/wine/bin/wine64
           #
+          echo \# docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/bin/wine64 --version
+          docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/bin/wine64 --version
           echo \# docker_wine --version
           docker_wine --version
           #
