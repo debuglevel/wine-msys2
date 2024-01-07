@@ -184,6 +184,19 @@ jobs:
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/wine-9.0-rc1-custom-amd64/bin/wine /mnt/usr/bin/bash.exe -l -c "borg --version"          
 
 
+      - name: Archive MSYS2 with borgmatic installed
+        env:
+          ACTIONS_STEP_DEBUG: true
+        run: |
+          XZ_OPT=-9 tar -cJf msys2-with-borgmatic.tar.xz msys64
+          curl --upload-file msys2-with-borgmatic.tar.xz https://free.keep.sh
+
+      # TODO: that is probably quite big...
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: Wine Stable
+      #     path: ./msys2-with-borgmatic.tar.xz
+      #     retention-days: 1
 
 
       # - name: Extract metadata (tags, labels) for Docker
