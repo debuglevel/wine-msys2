@@ -1,4 +1,4 @@
-name: Wine MSYS2
+name: Build and upload WINE-MSYS2 (WINE with hacks to make MSYS2 work)
 
 on:
   workflow_dispatch:

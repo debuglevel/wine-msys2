@@ -339,7 +339,8 @@ if ! command -v bwrap 1>/dev/null; then
 	exit 1
 fi
 
-if [ ! -d "${BOOTSTRAP_X64}" ] || [ ! -d "${BOOTSTRAP_X32}" ]; then
+# if [ ! -d "${BOOTSTRAP_X64}" ] || [ ! -d "${BOOTSTRAP_X32}" ]; then
+if [ ! -d "${BOOTSTRAP_X64}" ] ; then
 	clear
 	echo "Bootstraps are required for compilation!"
 	exit 1
