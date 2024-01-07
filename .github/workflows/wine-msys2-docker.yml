@@ -142,6 +142,7 @@ jobs:
           docker tag wine debuglevel/wine-msys2:latest
           docker push debuglevel/wine-msys2:latest
 
+      # TODO: This belongs into an own Workflow (ideally triggered after this one is finished.)
       - name: Install borg/borgmatic dependencies on MSYS2
         run: |
           docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/bin/wine /mnt/usr/bin/bash.exe -l -c "pacman --sync --needed --noconfirm python python-pip"

@@ -44,3 +44,5 @@ jobs:
           name: wine-msys2
           path: ./*.tar.xz
           retention-days: 2
+
+# TODO: If this workflow is successful, it should trigger wine-msys2-docker.yml
