@@ -56,7 +56,9 @@ jobs:
 
       - name: Test if Wine works in the docker image
         run: |
+          shopt -s expand_aliases
           alias docker_wine='docker run -e WINEDEBUG=-all -v $PWD/msys64:/mnt/ wine /opt/wine/bin/wine64'
+          #
           echo \# docker run wine find /opt/wine -iname '*.exe'
           #
           docker run wine find /opt/wine -iname '*.exe'
