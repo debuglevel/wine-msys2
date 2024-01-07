@@ -36,6 +36,9 @@ jobs:
           echo \# mv wine-*-amd64 wine
           mv wine-*-amd64 wine
           #
+          echo \# tree -L 2 wine
+          tree -L 2 wine
+          #
           # TODO: This prints 32bit for our amd64 build. That is weird, and Docker probably can't run this. (Works for now, as some weird workarounds are done.)
           echo \# file wine/bin/wine
           file wine/bin/wine
