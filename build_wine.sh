@@ -128,6 +128,9 @@ if [ "$USE_CCACHE" = "true" ]; then
 fi
 
 build_with_bwrap () {
+	echo "===== Starting build_with_bwrap ${1}"
+	date 
+
 	if [ "${1}" = "32" ]; then
 		BOOTSTRAP_PATH="${BOOTSTRAP_X32}"
 	else
@@ -145,6 +148,9 @@ build_with_bwrap () {
 		  --bind-try "${HOME}"/.ccache "${HOME}"/.ccache \
 		  --setenv PATH "/bin:/sbin:/usr/bin:/usr/sbin" \
 			"$@"
+
+    echo "===== Ended build_with_bwrap ${1}"
+	date 
 }
 
 if ! command -v git 1>/dev/null; then
@@ -415,7 +421,8 @@ for build in ${builds_list}; do
 			cp "${build}"/bin/wine64 "${build}"/bin/wine
 		fi
 
-		tar -Jcf "${build}".tar.xz "${build}"
+		# tar -Jcf "${build}".tar.xz "${build}"
+		time tar -Jcf "${build}".tar.xz "${build}"
 		mv "${build}".tar.xz "${result_dir}"
 	fi
 done
@@ -424,4 +431,6 @@ rm -rf "${BUILD_DIR}"
 
 echo
 echo "Done"
-echo "The builds should be in ${result_dir}"
+echo "The builds should be in ${result_dir}:"
+
+ls -l ${result_dir}

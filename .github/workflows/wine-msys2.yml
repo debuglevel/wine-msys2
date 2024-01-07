@@ -9,7 +9,8 @@ jobs:
 
     steps:
       # from bootstraps.yml:
-      - uses: actions/checkout@v3
+      - name: Check out repository
+        uses: actions/checkout@v3
       - name: Create bootstraps
         run: |
           sudo apt update
@@ -26,6 +27,7 @@ jobs:
           echo \# chmod +x build_wine.sh
           chmod +x build_wine.sh
           #
+          EXPERIMENTAL_WOW64=true
           export WINE_VERSION="$(wget -q -O - "https://gitlab.winehq.org/wine/wine/-/raw/stable/VERSION" | tail -c +14)"
           WINE_BRANCH=vanilla ./build_wine.sh
           #
