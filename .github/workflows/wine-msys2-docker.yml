@@ -190,36 +190,3 @@ jobs:
         run: |
           XZ_OPT=-9 tar -cJf msys2-with-borgmatic.tar.xz msys64
           curl --upload-file msys2-with-borgmatic.tar.xz https://free.keep.sh
-
-      # TODO: that is probably quite big...
-      # - uses: actions/upload-artifact@v3
-      #   with:
-      #     name: Wine Stable
-      #     path: ./msys2-with-borgmatic.tar.xz
-      #     retention-days: 1
-
-
-      # - name: Extract metadata (tags, labels) for Docker
-      #   id: meta
-      #   uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
-      #   with:
-      #     images: debuglevel/wine-msys2
-
-      # - name: Build and push Docker image
-      #   uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
-      #   with:
-      #     context: Docker
-      #     file: ./Dockerfile
-      #     push: true
-      #     tags: ${{ steps.meta.outputs.tags }}
-      #     labels: ${{ steps.meta.outputs.labels }}
-
-
-
-
-
-      # - uses: actions/upload-artifact@v3
-      #   with:
-      #     name: Wine Stable
-      #     path: ./*.tar.xz
-      #     retention-days: 2
