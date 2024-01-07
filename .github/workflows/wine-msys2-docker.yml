@@ -23,34 +23,8 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          #echo \# ls -alh
-          #ls -alh
-          # 
-          #echo \# pwd
-          #pwd
-          #
           sudo apt update
           sudo apt install debootstrap perl git wget xz-utils bubblewrap autoconf
-          #
-          #WD=$(pwd)
-          #
-          #echo \# cd /opt
-          #cd /opt
-          #
-          #echo \# ls -alh /opt
-          #ls -alh /opt
-          #
-          #echo \# tree -L 2
-          #tree -L 2
-          #
-          #echo cd
-          #cd "wine-msys2"
-          #
-          #echo \# ls -alh
-          #ls -alh
-          #
-          #echo \# sudo tar --extract --preserve-permissions --file wine-*-custom-x86.tar.xz
-          #sudo tar --extract --preserve-permissions --file wine-*-custom-x86.tar.xz
           #
           echo \# cd Docker
           cd Docker
@@ -58,33 +32,8 @@ jobs:
           echo \# sudo tar -xpf /opt/wine-*-custom-amd64.tar.xz
           sudo tar --extract --preserve-permissions --file /opt/wine-msys2/wine-*-custom-amd64.tar.xz
           #
-          #echo \# ls -alh
-          #ls -alh
-          # 
-          #echo \# tree -L 2
-          #tree -L 2
-          #
-          #echo \# ls -alh $WD/Docker
-          #ls -alh $WD/Docker
-          #
-          #echo \# $WD/Docker/wine 
-          #mkdir -p $WD/Docker/wine
-          #
-          #echo \# cp -a wine-9.0-rc1-custom-x86 $WD/Docker/wine
-          #cp -a wine-9.0-rc1-custom-x86 $WD/Docker/wine
-          #
           echo \# mv wine-*-amd64 wine
           mv wine-*-amd64 wine
-          #
-          #echo \# cp -a wine Docker/wine
-          #cp -a wine Docker
-          #
-          #echo \# find $WD/Docker/wine -name '*wine*'
-          #find $WD/Docker/wine -name '*wine*'
-          #
-          #file $(which ls)
-          #file $(which ping) 
-          #file $(which cat)
           #
           # TODO: This prints 32bit for our amd64 build. That is weird, and Docker probably can't run this. (Works for now, as some weird workarounds are done.)
           echo \# file wine/bin/wine
@@ -95,12 +44,6 @@ jobs:
           #
           echo \# wine/bin/wine --help
           wine/bin/wine --help
-          #
-          #echo \# cd Docker
-          #cd Docker
-          #
-          #echo \# ls -alh
-          #ls -alh
           #
           echo docker build -t wine .
           docker build -t wine .
