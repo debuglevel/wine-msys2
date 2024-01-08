@@ -1,3 +1,10 @@
+This basically creates a docker image of @jhol's hacks to make MSYS2 work on Wine (see https://github.com/msys2/MSYS2-packages/issues/682).
+It uses a modified https://github.com/Kron4ek/Wine-Builds as a build system.
+
+# This is a fork, ignore the following.
+
+
+
 ## Download
 
 The builds can be downloaded either from [**the releases page**](https://github.com/Kron4ek/Wine-Builds/releases) or from the **[MEGA](https://mega.nz/folder/ZZUV1K7J#kIenmTQoi0if-SAcMSuAHA)** cloud. 
