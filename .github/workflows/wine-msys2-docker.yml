@@ -1,5 +1,5 @@
 # This workflow consumes the latest artifact from the wine-msys2.yml workflow.
-name: Build and upload WINE-MSYS2 docker image
+name: Build WINE-MSYS2 docker image
 
 on:
   push:
