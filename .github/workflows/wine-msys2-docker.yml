@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
 
     steps:
       - name: Check out repository
@@ -43,11 +44,11 @@ jobs:
           echo \# file wine/bin/wine64
           file wine/bin/wine64
           #
-          echo \# wine/bin/wine64 --help
-          wine/bin/wine64 --help
+          echo \# wine/bin/wine64 --version
+          wine/bin/wine64 --version
           #
-          echo \# wine/bin/wine64 --help
-          wine/bin/wine64 --help
+          echo \# wine/bin/wine64 --version
+          wine/bin/wine64 --version
           #
           echo docker build -t wine .
           docker build -t wine .
@@ -86,11 +87,11 @@ jobs:
           echo \# tar --extract --file msys2-base-x86_64-20231026.tar.xz
           tar --extract --file msys2-base-x86_64-20231026.tar.xz
           #
-          echo \# docker_wine --help
-          docker_wine --help
+          echo \# docker_wine --version
+          docker_wine --version
           #
-          echo \# docker_wine /mnt/usr/bin/bash.exe -l -c "echo PWD: $PWD"
-          docker_wine /mnt/usr/bin/bash.exe -l -c "echo PWD: $PWD"
+          echo \# docker_wine /mnt/usr/bin/bash.exe -l -c "echo PWD: \$PWD"
+          docker_wine /mnt/usr/bin/bash.exe -l -c "echo PWD: \$PWD"
           #
           echo \# docker_wine /mnt/usr/bin/bash.exe -l -c "pacman --version"
           docker_wine /mnt/usr/bin/bash.exe -l -c "pacman --version"
