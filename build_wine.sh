@@ -200,6 +200,11 @@ if [ -n "${CUSTOM_SRC_PATH}" ]; then
 
 	if [ "${is_url}" = "git://" ] || [ "${is_url}" = "https:" ]; then
 		git clone -b "${CUSTOM_SRC_BRANCH}" "${CUSTOM_SRC_PATH}" wine
+		if [ -n "${CUSTOM_SRC_SHA1}" ]; then
+		  cd wine
+		  git reset --hard $CUSTOM_SRC_SHA1
+		  cd ..
+		fi
 	else
 		if [ ! -f "${CUSTOM_SRC_PATH}"/configure ]; then
 			echo "CUSTOM_SRC_PATH is set to an incorrect or non-existent directory!"

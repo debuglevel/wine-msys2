@@ -13,7 +13,12 @@ jobs:
     env:
       MSYS2_URL: https://github.com/msys2/msys2-installer/releases/download/2023-10-26/msys2-base-x86_64-20231026.tar.xz
       CUSTOM_SRC_PATH: https://gitlab.winehq.org/jhol/wine.git
-      CUSTOM_SRC_BRANCH: msys2-hacks-17   # TODO: I probably want the commit id, not the tip of the branch to have a reproducible build. It's fragile enough already.
+      # MUST be set if CUSTOM_SRC_PATH is set.
+      CUSTOM_SRC_BRANCH: msys2-hacks-17
+      # Set this to something if you do not want to just checkout the branch but a specific commit.
+      # Does probably not matter which branch you are on.
+      # Recommended for reproducible builds.
+      CUSTOM_SRC_SHA1: aed38b3fea259c23738d60df67d562592d394393
 
     steps:
       - name: Check out repository
