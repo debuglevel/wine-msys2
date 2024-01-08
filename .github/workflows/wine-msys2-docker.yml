@@ -30,8 +30,8 @@ jobs:
           echo \# cd Docker
           cd Docker
           #
-          echo \# sudo tar -xpf /opt/wine-*-custom-amd64.tar.xz
-          sudo tar --extract --preserve-permissions --file /opt/wine-msys2/wine-*-custom-amd64.tar.xz
+          echo \# sudo tar -xpf /opt/wine-*-amd64.tar.xz
+          sudo tar --extract --preserve-permissions --file /opt/wine-msys2/wine-*-amd64.tar.xz
           #
           echo \# mv wine-*-amd64 wine
           mv wine-*-amd64 wine
