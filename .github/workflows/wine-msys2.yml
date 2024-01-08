@@ -29,7 +29,7 @@ jobs:
           #
           EXPERIMENTAL_WOW64=true
           export WINE_VERSION="$(wget -q -O - "https://gitlab.winehq.org/wine/wine/-/raw/stable/VERSION" | tail -c +14)"
-          WINE_VERSION=git WINE_BRANCH=vanilla ./build_wine.sh
+          WINE_BRANCH=vanilla ./build_wine.sh
           #
           echo \# ls -alh /home/runner/work/wine-msys2/wine-msys2
           ls -alh /home/runner/work/wine-msys2/wine-msys2
